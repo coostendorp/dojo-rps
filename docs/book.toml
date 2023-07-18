@@ -1,0 +1,6 @@
+[book]
+authors = ["mariz"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Dojo Hackathon Primer Kit"
