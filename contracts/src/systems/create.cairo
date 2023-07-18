@@ -22,10 +22,6 @@ mod create {
         let game_id = ctx.world.uuid();
         let player_id: felt252 = ctx.origin.into();
 
-        ctx.world.grant_writer('Game', 'commit');
-        // ctx.world.grant_writer('Game', 'reveal');
-        // ctx.world.grant_writer('Game', 'reset');
-
         // game entity
         set !(
             ctx.world,
