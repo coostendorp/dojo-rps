@@ -1,41 +1,47 @@
-import './App.css';
-import {useDojo} from './DojoContext';
-import {useComponentValue} from "@dojoengine/react";
-import {Direction} from './dojo/createSystemCalls'
-import {Utils} from '@dojoengine/core';
+import clsx from "clsx";
+import GamePanel from "./components/GamePanel";
 
 function App() {
-    const {
-        systemCalls: {create, commit, reveal, reset},
-        components: {Game, Player},
-    } = useDojo();
-
-
-    // const entityId = BigInt(import.meta.env.VITE_ENTITY_ID);
-    // const position = useComponentValue(Player, Utils.getEntityIdFromKeys([entityId]));
-    // const moves = useComponentValue(Player, Utils.getEntityIdFromKeys([entityId]));
-
 
     return (
-        <>
-            <div className="card">
-                <button onClick={() => create()}>Create</button>
-            </div>
-            <div className="card">
-                <button onClick={() => commit()}>Commit</button>
-            </div>
-            <div className="card">
-                <button onClick={() => reveal()}>Reveal</button>
-            </div>
-            <div className="card">
-                <button onClick={() => reset()}>Reset</button>
-            </div>
-
-            {/*<div className="card">*/}
-            {/*    <div>Moves Remaining: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>*/}
-            {/*</div>*/}
-
-        </>
+       <div className={clsx(
+           'w-screen h-screen',
+           'flex justify-center items-center',
+           'bg-gradient-to-b from-[#007795] to-[#1F215C]'
+       )}>
+           <img
+               src={'/left_dojoCut.png'}
+               alt={'left'}
+               className={'absolute top-0 left-[85px]'}
+               draggable={false}
+           />
+           <img
+               src={'/right_dojoCut.png'}
+               alt={'right'}
+               className={'absolute top-0 right-[85px]'}
+               draggable={false}
+           />
+           <img
+               src={'/top_dojoCut.png'}
+               alt={'right'}
+               className={'absolute top-0'}
+               draggable={false}
+           />
+           <img
+               src={'/img_logo.png'}
+               alt={'right'}
+               className={'absolute top-[42px]'}
+               draggable={false}
+           />
+           <div className={clsx(
+               'w-[1330px] h-[807px] absolute top-[114px]',
+               'flex p-8 gap-6 z-[50]',
+               'rounded-3xl border-4 border-option-3',
+               'bg-game-panel bg-no-repeat bg-cover',
+           )}>
+               <GamePanel />
+           </div>
+       </div>
     );
 }
 

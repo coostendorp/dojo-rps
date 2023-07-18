@@ -4,12 +4,21 @@ import { defineComponent, Type as RecsType, World } from "@latticexyz/recs";
 
 export function defineContractComponents(world: World) {
   return {
-    Moves: (() => {
-      const name = "Moves";
+    Game: (() => {
+      const name = "Game";
       return defineComponent(
         world,
         {
-          remaining: RecsType.Number,
+          game_id: RecsType.Number,
+          state: RecsType.Number,
+          player1: RecsType.Number,
+          player2: RecsType.Number,
+          player1_hash: RecsType.Number,
+          player2_hash: RecsType.Number,
+          player1_commit: RecsType.Number,
+          player2_commit: RecsType.Number,
+          started_timestamp: RecsType.Number,
+          winner: RecsType.Number,
         },
         {
           metadata: {
@@ -18,41 +27,12 @@ export function defineContractComponents(world: World) {
         }
       );
     })(),
-    Position: (() => {
-      const name = "Position";
+    Player: (() => {
+      const name = "Player";
       return defineComponent(
         world,
         {
-          x: RecsType.Number,
-          y: RecsType.Number,
-        },
-        {
-          metadata: {
-            name: name,
-          },
-        }
-      );
-    })(),
-    AuthStatus: (() => {
-      const name = "AuthStatus";
-      return defineComponent(
-        world,
-        {
-          is_authorized: RecsType.Boolean,
-        },
-        {
-          metadata: {
-            name: name,
-          },
-        }
-      );
-    })(),
-    AuthRole: (() => {
-      const name = "AuthRole";
-      return defineComponent(
-        world,
-        {
-          id: RecsType.Number,
+          wins: RecsType.Number,
         },
         {
           metadata: {
