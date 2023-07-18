@@ -1,8 +1,9 @@
-# Simple RPS
-This game is continuous, to keep it simple. It works based on a hash-based commitment scheme.
+# Simple RPS (Rock Paper Scissors)
+- A continuous game, finishing one automatically starts the next
+- Uses a hash-based commitment scheme
+- For 2 players, but every game can have different accounts participating
+- Once both players reveal their choice, the winner is decided and the game is reset
 
-If no one committed, anyone can commit the first move. Then any other address can commit a move.
-Both then reveal (in any order), and the winner's address is returned.
 
 
 # Dojo Web Starter: Official Guide
