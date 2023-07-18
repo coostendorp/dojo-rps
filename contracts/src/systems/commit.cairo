@@ -60,7 +60,8 @@ mod commit {
                 player2_hash: game.player2_hash,
                 player1_commit: game.player1_commit,
                 player2_commit: game.player2_commit,
-                started_timestamp: game.started_timestamp
+                started_timestamp: game.started_timestamp,
+                winner: game.winner
             })
         );
 

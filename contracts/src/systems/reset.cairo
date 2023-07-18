@@ -10,7 +10,7 @@ mod reset {
     use dojo_rps::components::player::Player;
 
     use dojo_rps::constants::{
-        STATE_IDLE,STATE_COMMIT_1,STATE_COMMIT_2,STATE_REVEAL_1, GAME_MAX_DURATION
+        STATE_IDLE,STATE_COMMIT_1,STATE_COMMIT_2,STATE_REVEAL_1,STATE_DECIDED, GAME_MAX_DURATION
     };
 
     use dojo_rps::utils::random;
@@ -29,7 +29,8 @@ mod reset {
 
         // Error if the game is not expired
         assert(
-             (time_now - game.started_timestamp) > GAME_MAX_DURATION,
+             (time_now - game.started_timestamp) > GAME_MAX_DURATION ||
+             game.state == STATE_DECIDED,
             'Game not expired'
         );
 
@@ -42,6 +43,7 @@ mod reset {
         game.player1_commit = 0;
         game.player2_commit = 0;
         game.started_timestamp = 0;
+        game.winner = 0;
 
 
         // Store the Game
@@ -57,7 +59,8 @@ mod reset {
                 player2_hash: game.player2_hash,
                 player1_commit: game.player1_commit,
                 player2_commit: game.player2_commit,
-                started_timestamp: game.started_timestamp
+                started_timestamp: game.started_timestamp,
+                winner: game.winner
             })
         );
 

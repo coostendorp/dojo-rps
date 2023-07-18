@@ -14,7 +14,7 @@ mod reveal {
     use poseidon::poseidon_hash_span;
 
     use dojo_rps::constants::{
-        STATE_IDLE,STATE_COMMIT_1,STATE_COMMIT_2,STATE_REVEAL_1, ROCK, PAPER, SCISSORS
+        STATE_IDLE,STATE_COMMIT_1,STATE_COMMIT_2,STATE_REVEAL_1,STATE_DECIDED, ROCK, PAPER, SCISSORS
     };
 
     use dojo_rps::utils::random;
@@ -86,6 +86,7 @@ mod reveal {
         if game.state == STATE_REVEAL_1  {
             let winner = decide(game.player1_commit, game.player2_commit);
             winner.print();
+            game.winner = winner;
             if winner == 0 {
                 // TODO emit event for "Draw"
             } else if winner == 1 {
@@ -94,15 +95,8 @@ mod reveal {
                 // TODO emit event for Player2 wins
             }
 
-            // Reset the game
-            game.state = STATE_IDLE;
-            game.player1 = 0;
-            game.player2 = 0;
-            game.player1_hash = 0;
-            game.player2_hash = 0;
-            game.player1_commit = 0;
-            game.player2_commit = 0;
-            game.started_timestamp = 0;
+            // switch the state to decided
+            game.state = STATE_DECIDED;
 
         }else {
             game.state = STATE_REVEAL_1
@@ -122,7 +116,8 @@ mod reveal {
                 player2_hash: game.player2_hash,
                 player1_commit: game.player1_commit,
                 player2_commit: game.player2_commit,
-                started_timestamp: game.started_timestamp
+                started_timestamp: game.started_timestamp,
+                winner: game.winner
             })
         );
     }

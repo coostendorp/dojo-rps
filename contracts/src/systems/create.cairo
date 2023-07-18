@@ -22,6 +22,9 @@ mod create {
         let game_id = ctx.world.uuid();
         let player_id: felt252 = ctx.origin.into();
 
+        ctx.world.grant_writer('Game', 'commit');
+        // ctx.world.grant_writer('Game', 'reveal');
+        // ctx.world.grant_writer('Game', 'reset');
 
         // game entity
         set !(
@@ -36,7 +39,8 @@ mod create {
                 player2_hash: 0,
                 player1_commit: 0,
                 player2_commit: 0,
-                started_timestamp: 0
+                started_timestamp: 0,
+                winner: 0
             })
         );
 

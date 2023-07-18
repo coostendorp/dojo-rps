@@ -70,10 +70,6 @@ fn test_playthrough() {
     let (world_address, game_id, player_id) = create_game();
     let world = IWorldDispatcher { contract_address: world_address };
 
-    // Give both players ownership so we can write freely
-    world.grant_owner(player1, 0);
-    world.grant_owner(player2, 0);
-
     // Set the players commitments
     let player_1_commit: u8 = SCISSORS;
     let player_2_commit: u8 = PAPER;
