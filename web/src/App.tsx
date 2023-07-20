@@ -1,7 +1,13 @@
+// import {useDojo} from './DojoContext';
+// import {useComponentValue} from "@dojoengine/react";
+// import {Direction} from './dojo/createSystemCalls'
+// import {Utils} from '@dojoengine/core';
 import clsx from "clsx";
-import GamePanel from "./components/GamePanel";
+import GamePanel from "./components/GamePanel.tsx";
+import useSyncEvents from "./hooks/useSyncEvents";
 
 function App() {
+    useSyncEvents()
 
     return (
        <div className={clsx(

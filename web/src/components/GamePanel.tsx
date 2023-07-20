@@ -19,7 +19,7 @@ export default function GamePanel() {
 
     const game = useComponentValue(Game, Utils.getEntityIdFromKeys([BigInt(GAME_ID)]))
 
-    const isUserPlayer1 = BigInt(game?.player1 ?? 0) === BigInt(signer.address)
+    const isUserPlayer1 = Number(game?.player1 ?? 0) === Number(signer.address)
 
     const player1Choice = game?.player1_commit ?? 0
     const player2Choice = game?.player2_commit ?? 0

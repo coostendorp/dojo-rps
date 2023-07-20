@@ -27,6 +27,10 @@ export async function setupNetwork() {
 
     const signer = new Account(provider.sequencerProvider, KATANA_ACCOUNT_ADDRESS, ec.getKeyPair(KATANA_ACCOUNT_PRIVATEKEY))
 
+    // set lastBlock synced here
+    const lastBlock = await provider.provider.getBlock("latest");
+    localStorage.setItem('RPS_LAST_SYNCED_BLOCK', JSON.stringify(lastBlock.block_number));
+
     const syncWorker = new SyncWorker(provider, contractComponents, EVENT_KEY);
 
     return {

@@ -5,9 +5,10 @@ type PropType = {
     handSign?: string,
     isSelected?: boolean,
     onSelect?: () => void,
+    disabled?: boolean
 }
 
-export default function Choice({ image, handSign, isSelected, onSelect }: PropType) {
+export default function Choice({ image, handSign, isSelected, onSelect, disabled }: PropType) {
     return (
         <div className={'flex flex-col gap-2'}>
             <div
@@ -16,8 +17,10 @@ export default function Choice({ image, handSign, isSelected, onSelect }: PropTy
                     'h-[183px] w-[183px]',
                     'rounded-full',
                     'bg-option-6',
-                    `${handSign ? 'cursor-pointer' : ''}`,
                     { 'border-4': isSelected },
+                    { 'cursor-pointer': disabled === false },
+                    { 'cursor-not-allowed': disabled }
+
                 )}
                 onClick={onSelect}
             >
